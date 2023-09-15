@@ -8,8 +8,11 @@ from pydantic import BaseModel, StrictStr
 from os import environ as env
 
 # Define a data model for the incoming message
+
+
 class ProducerMessage(BaseModel):
     message: StrictStr = ""
+
 
 # Create a FastAPI app instance
 app = FastAPI()
@@ -24,6 +27,8 @@ loop = asyncio.get_event_loop()
 aioproducer = AIOKafkaProducer(loop=loop, bootstrap_servers=KAFKA_INSTANCE)
 
 # Define an event handler to start the Kafka producer when the app starts
+
+
 @app.on_event("startup")
 async def startup_event():
     try:
@@ -32,6 +37,8 @@ async def startup_event():
         logging.error(f"Kafka error during startup: {kafka_error}")
 
 # Define an event handler to stop the Kafka producer when the app shuts down
+
+
 @app.on_event("shutdown")
 async def shutdown_event():
     try:
@@ -40,11 +47,15 @@ async def shutdown_event():
         logging.error(f"Kafka error during shutdown: {kafka_error}")
 
 # Define a root endpoint for the FastAPI app
+
+
 @app.get("/")
 def read_root():
     return {"Producer home"}
 
 # Define an endpoint for producing messages to a Kafka topic
+
+
 @app.post("/producer/{topicname}")
 async def kafka_produce(msg: ProducerMessage, topicname: str):
     try:
