@@ -3,11 +3,11 @@ variable "project" {
 }
 
 variable "environment" {
-  default = "dev"
+  default = ""
 }
 
 variable "team" {
-  default = "aops"
+  default = ""
 }
 
 variable "instance" {
@@ -18,20 +18,23 @@ variable "location" {
   default = "westeurope"
 }
 
-variable "resource_group_name" {
-  default = ""
-}
 
 variable "common_tags" {
   default = {
-    Environment  = "Dev",
+    Environment  = "",
     ITSystemCode = "",
     Responsible  = ""
   }
 }
 
-variable "vnet_address_space" {}
+variable "vnet_address_space" {
+  default = ""
+}
 
-variable "sub_address_prefix" {}
+variable "sub_address_prefix" {
+  default = ""
+}
 
-variable "subnet_name" {}
+variable "subnet_name" {
+  default = ""
+}

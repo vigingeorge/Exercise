@@ -1,6 +1,6 @@
 # Create private end point
 resource "azurerm_private_endpoint" "pe" {
-  name                = "pe-${var.project}-${var.environment}-${var.team}-${var.instance}"
+  name                = "pep-${var.project}-${var.environment}-${var.team}-${var.instance}"
   location            = var.location
   resource_group_name = var.resource_group_name
   subnet_id           = var.subnet_id
