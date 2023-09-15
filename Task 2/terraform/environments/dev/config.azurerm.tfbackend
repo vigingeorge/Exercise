@@ -1,0 +1,4 @@
+resource_group_name  = "tfstatedev3"
+storage_account_name = "tfstateppedevapos3"
+container_name       = "tfstate"
+key                  = "terraform.tfstate"
