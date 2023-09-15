@@ -6,6 +6,8 @@
 
 ## Command examples to run terraform scripts manually 
 
+create variables.tfvars in the appropriate enviroment
+
 replace [env] below for the appropriate enviroment
 
 INIT `terraform init -backend-config "environments\[env]\config.azurerm.tfbackend"`
