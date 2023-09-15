@@ -1,6 +1,7 @@
 ## Run below commands to login to azure 
 
   az login
+  
   az account set --subscription "subscription name"
 
 ## Command examples to run terraform scripts manually 
