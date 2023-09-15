@@ -2,7 +2,7 @@
 
 This repository contains two exercises that cover the following tasks:
 
-## Task 1: Kafka Event Producer and Consumer APIs
+## Exercise 1: Kafka Event Producer and Consumer APIs
 
 In this task, you'll find two Python programs that have been containerized to create APIs for producing and consuming events from a Kafka topic locally. These programs are designed to demonstrate how to work with Kafka in a containerized environment.
 
@@ -12,7 +12,7 @@ In this task, you'll find two Python programs that have been containerized to cr
 
 - **Consumer API**: This program provides a FastAPI-based API that consumes events from a Kafka topic.
 
-## Task 2: Azure Redis Cache Terraform Module
+## Exercise 2: Azure Redis Cache Terraform Module
 
 In this task, you'll find a Terraform module that simplifies the provisioning of an Azure Redis Cache service with support for private endpoints.
 
