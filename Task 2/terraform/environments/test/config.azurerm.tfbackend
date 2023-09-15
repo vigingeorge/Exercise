@@ -1,4 +1,4 @@
-resource_group_name  = "tfstatedev"
-storage_account_name = "tfstatecpdevapos1"
-container_name       = "tfstate"
-key                  = "test.terraform.tfstate"
+resource_group_name  = ""
+storage_account_name = ""
+container_name       = ""
+key                  = ""
