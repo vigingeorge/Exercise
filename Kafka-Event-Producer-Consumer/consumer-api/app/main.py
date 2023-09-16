@@ -65,7 +65,7 @@ async def shutdown_event():
 @app.get("/consumer")
 def read_root():
     """ Define a root endpoint for the FastAPI app """
-    return {"Consuming %s successfully. Check the log for details."% topic}
+    return {"Consuming %s successfully. Check the log for details." % topic}
 
 
 # Entry point for running the application
