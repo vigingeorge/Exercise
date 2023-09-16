@@ -1,10 +1,10 @@
+"""Module providing functionality of consuming messages from kafka topic."""
 import asyncio
-import json
 import logging
 
+from os import environ as env
 from aiokafka import AIOKafkaConsumer, errors
 from fastapi import FastAPI
-from os import environ as env
 
 # Create a FastAPI app instance
 app = FastAPI()
@@ -21,10 +21,9 @@ loop = asyncio.get_event_loop()
 # Create an AIOKafkaConsumer instance for consuming messages from the specified topic
 consumer = AIOKafkaConsumer(topic, bootstrap_servers=KAFKA_INSTANCE, loop=loop)
 
-# Define an asynchronous function to consume messages from Kafka
-
 
 async def consume():
+    """ Define an asynchronous function to consume messages from Kafka """
     await consumer.start()
     try:
         async for msg in consumer:
@@ -39,37 +38,34 @@ async def consume():
                 msg.timestamp,
             )
     except errors.KafkaError as kafka_error:
-        logging.error(f"Kafka error while consuming: {kafka_error}")
+        logging.error("Kafka error while consuming: %s", kafka_error)
     finally:
         await consumer.stop()
-
-# Define an event handler to start message consumption when the app starts
 
 
 @app.on_event("startup")
 async def startup_event():
+    """ Define an event handler to start message consumption when the app starts"""
     try:
         # Create a task to run the consume function asynchronously
         loop.create_task(consume())
     except errors.KafkaError as kafka_error:
-        logging.error(f"Kafka error during startup: {kafka_error}")
-
-# Define an event handler to stop the Kafka consumer when the app shuts down
+        logging.error("Kafka error during startup: %s", kafka_error)
 
 
 @app.on_event("shutdown")
 async def shutdown_event():
+    """ Define an event handler to stop the Kafka consumer when the app shuts down"""
     try:
         await consumer.stop()
     except errors.KafkaError as kafka_error:
-        logging.error(f"Kafka error during shutdown: {kafka_error}")
-
-# Define a root endpoint for the FastAPI app
+        logging.error("Kafka error during shutdown: %s", kafka_error)
 
 
 @app.get("/consumer")
 def read_root():
-    return {f"Consuming {topic} successfully. Check the log for details."}
+    """ Define a root endpoint for the FastAPI app """
+    return {"Consuming %s successfully. Check the log for details.", topic}
 
 
 # Entry point for running the application
