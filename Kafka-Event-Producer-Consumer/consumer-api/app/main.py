@@ -10,7 +10,7 @@ from fastapi import FastAPI
 app = FastAPI()
 
 # Get the Kafka instance address from environment variables or use a default value
-KAFKA_INSTANCE = env.get("KAFKA_INSTANCE", "localhost:9092")
+KAFKA_INSTANCE = env.get("KAFKA_INSTANCE")
 
 # Get the topic name from environment variables
 topic = env.get("topic")
