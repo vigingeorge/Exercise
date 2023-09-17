@@ -62,9 +62,15 @@ async def shutdown_event():
         logging.error("Kafka error during shutdown: %s", kafka_error)
 
 
+@app.get("/")
+def read_root():
+    """ Define a root endpoint for the FastAPI app"""
+    return {"Consumer home"}
+
+
 @app.get("/consumer")
 def read_root():
-    """ Define a root endpoint for the FastAPI app """
+    """ Define a consumer endpoint for the FastAPI app """
     return {f"Consuming {topic} successfully. Check the log for details."}
 
 
