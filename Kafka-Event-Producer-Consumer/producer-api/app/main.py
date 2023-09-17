@@ -46,7 +46,7 @@ async def shutdown_event():
 
 
 @app.get("/")
-def read_root():
+async def read_root():
     """ Define a root endpoint for the FastAPI app"""
     return {"Producer home"}
 
