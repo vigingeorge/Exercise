@@ -4,3 +4,10 @@ variable "team" {}
 variable "instance" {}
 variable "location" {}
 variable "resource_group_name" {}
+variable "use_vnet_injection" {}
+variable "subnet_id" {}
+variable "minimum_tls_version" {}
+variable "sku_name" {}
+variable "enable_non_ssl_port" {}
+variable "family" {}
+variable "capacity" {}

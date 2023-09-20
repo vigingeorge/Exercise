@@ -25,7 +25,7 @@ variable "location" {
 
 variable "common_tags" {
   description = "Common tags to apply to Azure resources."
-  default     = {
+  default = {
     Environment  = "development",
     ITSystemCode = "batman",
     Responsible  = "John Doe"
@@ -45,4 +45,36 @@ variable "sub_address_prefix" {
 variable "subnet_name" {
   description = "The name of the subnet within the VNet."
   default     = "subnet"
+}
+
+variable "use_vnet_injection" {
+  description = "Set to true to use VNet injection, false to use a private endpoint"
+  type        = bool
+  default     = false
+}
+
+variable "capacity" {
+  description = "Redis capacity"
+  default     = "2"
+}
+
+variable "family" {
+  description = "Redis Cache family (e.g., 'C', 'P', 'S', 'M')"
+  default     = "P"
+}
+
+variable "sku_name" {
+  description = "Redis Cache SKU name (e.g., 'Basic', 'Standard', 'Premium')"
+  default     = "Premium"
+}
+
+variable "enable_non_ssl_port" {
+  description = "Enable non-SSL port for Redis Cache"
+  type        = bool
+  default     = false
+}
+
+variable "minimum_tls_version" {
+  description = "Minimum TLS version for encryption"
+  default     = "1.2"
 }

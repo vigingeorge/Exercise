@@ -30,20 +30,30 @@ module "subnet" {
   sub_address_prefix  = var.sub_address_prefix
 }
 
-#Create the redis cache#
+#Create the redis cache 
 module "redis-cache" {
-  source              = "./modules/redis-cache"
+  source = "./modules/redis-cache"
+  # Conditionally create the module based on the "enable_module" variable
   project             = var.project
   environment         = var.environment
   team                = var.team
   instance            = var.instance
   location            = var.location
+  capacity            = var.capacity
+  family              = var.family
+  sku_name            = var.sku_name
+  enable_non_ssl_port = var.enable_non_ssl_port
+  minimum_tls_version = var.minimum_tls_version
   resource_group_name = module.resource-group.name
+  subnet_id           = module.subnet.id
+  use_vnet_injection  = var.use_vnet_injection
 }
+
 
 #Create the private end point#
 module "private-endpoint" {
   source                         = "./modules/private-endpoint"
+  count                          = var.use_vnet_injection ? 0 : 1
   project                        = var.project
   environment                    = var.environment
   team                           = var.team
