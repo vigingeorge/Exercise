@@ -18,5 +18,5 @@ In this exercise, you'll find a Terraform module that simplifies the provisionin
 
 ### Module Details:
 
-The Terraform module allows you to create an Azure Redis Cache service with private endpoint support. This module abstracts the underlying configuration and resources required to set up the Redis Cache service securely within a virtual network.
+The Terraform module allows you to create an Azure Redis Cache service with private endpoint support or Vnet injection. This module abstracts the underlying configuration and resources required to set up the Redis Cache service securely within a virtual network.
 
