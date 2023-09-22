@@ -33,7 +33,6 @@ module "subnet" {
 #Create the redis cache 
 module "redis-cache" {
   source = "./modules/redis-cache"
-  # Conditionally create the module based on the "enable_module" variable
   project             = var.project
   environment         = var.environment
   team                = var.team
